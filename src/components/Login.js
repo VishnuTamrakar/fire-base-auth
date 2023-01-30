@@ -7,7 +7,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      await logIn(name,email, password);
+      await logIn(email, password);
       navigate("/home");
     } catch (err) {
       setError(err.message);
@@ -41,13 +41,7 @@ const Login = () => {
         {error && <Alert variant="danger">{error}</Alert>}
         
         <Form onSubmit={handleSubmit} >
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="name"
-              placeholder="Enter your name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </Form.Group>
+         
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
@@ -77,6 +71,7 @@ const Login = () => {
             className="g-btn"
             type="dark"
             onClick={handleGoogleSignIn}
+            style={{margin:"auto"}}
           />
         </div>
       </div>

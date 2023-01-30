@@ -17,7 +17,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="p-4 box mt-3 text-center">
+      <div className="p-4 box mt-3 container  text-center">
         Hello Welcome <br />
         {user && user.email}
       </div>
